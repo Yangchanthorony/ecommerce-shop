@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+    <style>
+        
+        .container-fluid {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .add {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .icon_heart {
+            font-size: 30px;
+            cursor: pointer;
+            color: red;
+
+        }
+
+        .product_store {
+            width: 100%;
+        }
+
+        .product_store>.product {
+            margin-top: 5px;
+            background-color: beige;
+            padding: 20px;
+        }
+
+
+        .CARD {
+            max-height: 100%;
+            overflow-y: scroll;
+            background-color: rgb(222, 218, 218);
+            position: fixed;
+            right: 20px;
+            top: 0;
+
+        }
+        .CARD  > .card-header{
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: rgb(24, 24, 25);
+        }
+
+        .cart-total {
+            width: 25%;
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            padding: 20px;
+            background-color: rgb(11, 11, 11);
+        }
+
+        .cart-total > .text-light >  .payment{
+            color: rgb(249, 229, 56);
+        }
+
+        .btnCheckout{
+            background-color: goldenrod;
+            border: 1px solid white;
+            padding: 0px 10px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .btnCheckout:active{
+            transform: scale(0.93);
+        }
+
+        .num_cart{
+            position: relative;
+        }
+
+        .num_cart_icon{
+            color: rgb(250, 250, 250);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .num_cart > .num_cart_item{
+            color: rgb(241, 246, 241);
+            background-color: rgb(0, 205, 62);
+            padding: 0px 7px;
+            position: absolute;
+            top: -5px;
+            right: -14px;
+            border-radius: 50%;
+            font-weight: 500;
+        }
+
+        .cart-item{
+            background-color: aliceblue;
+        }
+
+        .price_of_items{
+            color: goldenrod;
+            font-weight: 700;
+        }
+
+        .show-modal-dark-mode{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(3, 3, 3, 0.549);
+            display: none;
+        }
+
+        .checkout_payment_modal{
+            width: 60%;
+            height: 80%;
+            background-color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            display: none;
+        }
+        .checkout_payment_modal > .checkout_title > .close_modal{
+            font-size: 30px;
+            color: red;
+            cursor: pointer;
+        }
+
+        .checkout_payment_modal > .checkout_title > .close_modal:active{
+            transform: scale(0.95);
+        }
+
+        .btn_paynow{
+            background-color: rgb(24, 24, 25);
+            width: 100%;
+            padding: 9px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+           
+        }
+        .btn_paynow:hover{
+            background-color: rgb(221, 192, 30);
+        }
+
+        .checkout_title{
+           font-weight: 600;
+        }
+    </style>
+<body>
+    <div class="d-flex container-fluid">
+
+        <!-- Product Start -->
+        <section class=" product w-75">
+            <div class="row mt-5 me-3">
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 370px;">
+                        <img src="https://i5.walmartimages.com/asr/cf6f585b-b2c5-4d60-97d1-a6fb73dd04a0.fbd7d71d08de80df7a9e972a1a6c0c0e.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="title">Fashion Shoes</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">35.5</span>
+                                    <span>$</span>
+                                </h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 370px;">
+                        <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/y/p/j/6-oogiy-40-aeonik-white-original-imagxggbpgv7gbue.jpeg?q=70"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class=" title">OGIY RETRO SHOES</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">50</span>
+                                    <span>$</span>
+                                </h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 370px;">
+                        <img src="https://www.jiomart.com/images/product/original/rvrdxh3dam/brainer-men-s-casual-shoes_black_10-product-images-rvrdxh3dam-1-202207130453.jpg?im=Resize=(500,630)"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class=" title">Brainer Shoes</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">45</span>
+                                    <span>$</span>
+                                </h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 320px;">
+                        <img src="https://dms.deckers.com/hoka/image/upload/f_auto,q_auto,dpr_auto/b_rgb:f7f7f9/w_414/v1674731586/catalog/images/transparent/1127896-WWH_1.png?_s=RAABAB0"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class=" title">Athletic Shoes</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">45</span>
+                                    <span>$</span></h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 320px;">
+                        <img src="https://www.numberoneshoes.co.nz/content/products/pop-by-heelys-strive-shoes-white-black-image02-heelys-strive.jpg?width=2500"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class=" title">Pop Shoes</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">35</span>
+                                    <span>$</span>
+                                </h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="card" style="height: 320px;">
+                        <img src="https://dms.deckers.com/hoka/image/upload/f_auto,q_auto,dpr_auto/b_rgb:f7f7f9/w_414/v1666346714/catalog/images/transparent/1110521-WHT_1.png?_s=RAABAB0"
+                            style=" height: 70%;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class=" title">Resistant Shoe</p>
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <h6>
+                                    <span class="price">50</span>
+                                    <span>$</span>
+
+                                </h6>
+                                <i class="bi bi-bag-plus-fill icon_heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Product End -->
+
+        <!-- Cart Items Start -->
+        <section class=" CARD w-25 h-100 sss  mt-5">
+            <div class="card-header d-flex justify-content-between align-items-center justify-content-lg-around">
+                <h1 class=" text-light">Your Cart</h1>
+                <div class="num_cart">
+                    <i class="bi bi-cart2 num_cart_icon"></i>
+                    <span class="num_cart_item">0</span>
+                </div>
+            </div>
+
+            <div class="card-body product_store p-3">
+
+                <!-- where is for inner items -->
+                
+                <div class="cart-total d-flex justify-content-between">
+                    <h3 class=" text-light">
+                        TOTAL $
+                        <span class="payment">0</span>
+                    </h3>
+                    <button class=" rounded-0 btnCheckout">Checkout</button>
+                </div>
+            </div>
+        </section>
+        <!-- Cart Items End -->
+
+        <!-- Modal Payment Start -->
+        <div class="show-modal-dark-mode"></div>
+
+        <div class="checkout_payment_modal">
+            <div class="checkout_body row p-5">
+                <form action="" class="row">
+                    <div class="col-md-7 shadow">
+                        <h3 class="checkout_title">SHIPPING ADDRESSS</h3>
+                        <div class="form-group">
+                            <input type="text" class=" form-control shadow-none" name="" id="" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class=" form-control shadow-none mt-3" name="" id="" placeholder="Gmail">
+                        </div>
+                        <div class="form-group mt-2">
+                            <select name="" class=" form-select shadow-none mt-3" id="shipping">
+                                <option value="2">ភ្នំពេញ</option>
+                                <option value="5">តាមខេត្ត</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class=" form-control shadow-none mt-3" name="" id="" placeholder="Apartement">
+                        </div>
+
+                        <div class="form-group col-md-6 d-flex">
+                            <input type="text" class="col-md-6 form-control shadow-none mt-3 me-1" name="" id="" placeholder="City">
+                            <input type="text" class="col-md-5 form-control shadow-none mt-3" name="" id="" placeholder="Zip">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" class=" form-control shadow-none mt-3" name="" id="" placeholder="Mobile No.">
+                        </div>
+
+                        <div class="form-group mt-3">
+                           <textarea name="" cols="30" class=" form-control shadow-none" rows="5" id="" placeholder="Order Note"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <h3 class="checkout_title">ORDERS SUMMERY</h3>
+                        <div class="detail_pay shadow p-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p>Subtotal</p>
+                                <p>$<span class="subtotal">0</span></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p>Shipping</p>
+                                <p>$<span class="shipping">0</span></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p>Total</p>
+                                <p>$<span class="total">0</span></p>
+                            </div>
+                        </div>
+                        <div class="payment_by_RQCODE shadow p-4">
+                            <h4 class=" text-center">Payment Method</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <img style="width: 50%; height: 150px;" class="mx-auto" src="https://qrcode.shanuthewebdev.in/images/default.png" alt="">     
+                           </div>
+                           <button class=" mt-3 btn_paynow">Pay Now</button>
+                        </div>
+                    
+                </form>
+            </div>
+        </div>
+        <!-- Modal Payment End -->
+
+    </div>
+</body>
+<script >
+    
+    var cards = document.querySelectorAll('.card');
+     for(let i=0;i<cards.length ; i++){
+         let buttonAdd = cards[i].querySelector(".icon_heart");
+         var total = 0.0;
+        var num = 0;
+         buttonAdd.addEventListener('click',()=>{
+           
+            let title = cards[i].querySelector(".title").textContent;
+            let price = cards[i].querySelector('.price').textContent;
+            let img   = cards[i].querySelector('img').src;
+            
+            
+            document.querySelector(".product_store").innerHTML +=  `
+               <div class="cart-item d-flex justify-content-between align-items-center p-3 mt-2">
+                    <img style="width: 50px; height: 50px;" src="${img}" alt="">
+                    <div class="d-flex justify-content-between mt-3">
+                        <p class=" text-dark me-3">${title}</p>
+                        <p class=" price_of_items">
+                            <span class="priceItems">${price}</span>
+                            <span>$</span>
+                        </p>
+                    </div>
+                    <button class=" btn btn-danger rounded-0 removeItem"><i class="bi bi-trash"></i></button>
+                </div>
+            `;
+          
+           
+           total = total + parseFloat(price);
+           document.querySelector(".payment").innerHTML = total;
+
+           num = num + 1;
+           document.querySelector(".num_cart_item").innerHTML = num;
+
+        
+
+         var totalPay = total; //for used store total price of cart items 
+
+         var totalNumOfItems = num; // for used store number of items in the cart
+
+         var removeItems = document.querySelectorAll('.removeItem');
+
+         //Event for Remove items
+         for(let i=0;i<removeItems.length;i++){
+             removeItems[i].addEventListener('click',function(){
+                  var Items = this.closest('.cart-item');
+                  var PricInCart = Items.querySelector('.priceItems').textContent;
+                  
+                  totalPay = totalPay - parseFloat(PricInCart);
+
+                  document.querySelector(".payment").innerHTML = totalPay;
+
+                  totalNumOfItems = totalNumOfItems - 1;
+
+                  document.querySelector(".num_cart_item").innerHTML = totalNumOfItems;
+                  
+                  Items.remove();
+
+                  total = totalPay;  //for used store total price of cart items, After Remove Items from cart
+                  num = totalNumOfItems;  //for used store number of items, After Remove Items from cart         
+               })
+            }
+
+            var buttoncheckout = document.querySelector(".btnCheckout");
+            buttoncheckout.addEventListener('click',()=>{
+
+                document.querySelector(".checkout_payment_modal").style.display = "block";
+                document.querySelector(".show-modal-dark-mode").style.display = "block";
+
+                document.querySelector(".subtotal").innerHTML = totalPay;
+                document.querySelector(".shipping").innerHTML = 0;
+                document.querySelector(".total").innerHTML = totalPay;
+                
+            });
+
+
+            //Shipping Cart
+            var selectShipping = document.querySelector("#shipping");
+            selectShipping.addEventListener('change',()=>{
+                var shipping = selectShipping.value;
+                document.querySelector(".shipping").innerHTML = shipping;
+                document.querySelector(".total").innerHTML = totalPay + parseFloat(shipping);
+            });
+
+    
+         });
+     }
+
+        var buttonCheckout = document.querySelector(".btnCheckout");
+        buttonCheckout.addEventListener('click',()=>{
+            document.querySelector(".checkout_payment_modal").style.display = "block";
+            document.querySelector(".show-modal-dark-mode").style.display = "block";
+        });
+        var modalDark = document.querySelector('.show-modal-dark-mode');
+        modalDark.addEventListener('click',function(){
+            document.querySelector(".checkout_payment_modal").style.display = "none";
+            document.querySelector(".show-modal-dark-mode").style.display = "none";
+        })
+</script>
+</html>
+‌‌‌‌‌‌‌‌‌
